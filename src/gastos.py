@@ -2,13 +2,25 @@
 
 lista_gastos = []
 def adicionar_gastos():
-    adicionar_gasto = {
-        "nome_gasto": input("Digite o nome do gasto: "),
-        "valor_gasto": float(input("Digite o valor do gasto: ")),
-        "data": input("Digite a data do gasto (dd/mm/aaaa): ")
+    nome_gasto = input("Digite o nome do gasto: ")
+
+    while True:
+        try:
+            valor_gasto = float(input("Digite o valor do gasto: "))
+            break
+        except ValueError:
+            print("Valor inválido. Digite apenas números.")
+
+    data_gasto = input("Digite a data do gasto (dd/mm/aaaa): ")
+
+    gasto = {
+        "nome": nome_gasto,
+        "valor": valor_gasto,
+        "data": data_gasto
     }
-    lista_gastos.append(adicionar_gasto)
-    print("Gastos adicionados com sucesso!!")
+
+    lista_gastos.append(gasto)
+    print("Gasto adicionado com sucesso!")
 
 
 def listar_gastos():
