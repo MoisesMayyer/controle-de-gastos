@@ -24,7 +24,15 @@ def adicionar_gastos():
 
 
 def listar_gastos():
-    print("Listando gastos")
+    if lista_gastos:
+        for gasto in lista_gastos:
+            print(
+            f"Nome: {gasto['nome']}\n"
+            f"Valor: {gasto['valor']:.2f}\n"
+            f"Data: {gasto['data']}\n"
+            )
+    else:
+        print("Nenhum gasto registrado.")
 
 
 def editar_gastos():
