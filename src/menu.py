@@ -17,7 +17,7 @@ def menu():
         "6 - Sair"
     )
     
-
+#menu temporário
 def iniciar():
     while True:
 
@@ -26,7 +26,8 @@ def iniciar():
         try:
             opcao = int(input("Escolha uma opção: "))
         except ValueError:
-            print("Digite apenas numeros")
+            print("opção invalida")
+            print("Digite apenas números")
             continue
 
         if opcao == 1:
