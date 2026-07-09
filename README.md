@@ -22,9 +22,12 @@ No terminal, execute:
 
 ```bash
 python main.py
+```
 
+ ```bash
 ControleDeGastos/
 │
 ├── main.py          # Ponto de entrada do programa
 ├── src/             # Funções principais do sistema
 └── dados/           # Armazenamento de dados
+```
