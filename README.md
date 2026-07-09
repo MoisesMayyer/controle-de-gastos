@@ -1,21 +1,20 @@
 # Controle de Gastos
 
-Este projeto é um sistema simples para controlar gastos usando o terminal do Python. Ele está em fase de construção e tem como objetivo ajudar no registro e organização de despesas de forma prática.
+Este projeto é um sistema simples de controle de gastos desenvolvido em Python para execução no terminal. O objetivo é praticar conceitos de programação, organização de código e persistência de dados.
 
 ## Objetivo
 
-Criar uma aplicação básica, sem interface gráfica, onde o usuário possa:
-- registrar gastos;
-- visualizar os valores cadastrados;
-- organizar as despesas por categoria;
-- acompanhar o total gasto.
+Criar uma aplicação que permita ao usuário registrar e acompanhar suas despesas de forma simples e organizada.
 
-## Funcionalidades previstas
+## Funcionalidades
 
-- adicionar novo gasto;
-- listar gastos cadastrados;
-- mostrar total acumulado;
-- salvar os dados para uso futuro.
+✅ Adicionar novos gastos  
+✅ Listar gastos cadastrados  
+✅ Tratamento de erros de entrada de dados  
+⬜ Mostrar total acumulado  
+⬜ Editar gastos existentes  
+⬜ Remover gastos  
+⬜ Salvar dados para uso futuro com banco de dados ou arquivo
 
 ## Como executar
 
@@ -23,19 +22,9 @@ No terminal, execute:
 
 ```bash
 python main.py
-```
 
-## Estrutura do projeto
-
-- main.py: ponto de entrada do programa;
-- src/: arquivos com as funções principais do sistema;
-- dados/: pasta para armazenar os dados do projeto.
-
-## Status do projeto
-
-O projeto está em desenvolvimento inicial, com a estrutura sendo organizada para receber as funcionalidades principais.
-
-## Tecnologias
-
-- Python
-- Terminal
+ControleDeGastos/
+│
+├── main.py          # Ponto de entrada do programa
+├── src/             # Funções principais do sistema
+└── dados/           # Armazenamento de dados
