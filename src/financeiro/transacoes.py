@@ -1,9 +1,9 @@
 from dados.dados import salvar_json, carregar_json
 from utils.utils import criar_id
 
-lista_gastos = carregar_json()
+lista_transacoes = carregar_json()
 
-def adicionar_gasto():
+def adicionar_transacao():
     nome_gasto = input("Digite o nome do gasto: ")
 
     while True:
@@ -15,26 +15,27 @@ def adicionar_gasto():
 
     data_gasto = input("Digite a data do gasto (dd/mm/aaaa): ")
 
-    gasto_id = criar_id(lista_gastos)
+    gasto_id = criar_id(lista_transacoes)
 
-    gasto = {
+    transacoes = {
         "id": gasto_id,
         "nome": nome_gasto,
         "valor": valor_gasto,
         "data": data_gasto
     }
 
-    lista_gastos.append(gasto)
-    salvar_json(lista_gastos)
+    lista_transacoes.append(transacoes)
+    salvar_json(lista_transacoes)
     print("Gasto adicionado com sucesso!")
 
 
 def listar_gastos():
-    if not lista_gastos:
+    carregar_json()
+    if not lista_transacoes:
         print("Nenhum gasto registrado.")
         return
 
-    for gasto in lista_gastos:
+    for gasto in lista_transacoes:
         print(
             f"ID: {gasto['id']}\n"
             f"Nome: {gasto['nome']}\n"
@@ -44,7 +45,7 @@ def listar_gastos():
 
 
 def editar_gasto():
-    if not lista_gastos:
+    if not lista_transacoes:
         print("Nenhum gasto registrado.")
         return
 
@@ -55,7 +56,7 @@ def editar_gasto():
         except ValueError:
             print("digite um valor valido")
 
-    for gasto in lista_gastos:
+    for gasto in lista_transacoes:
         if gasto["id"] == id_editar:
             novo_nome = input("Digite o novo nome do gasto: ")
 
@@ -71,7 +72,7 @@ def editar_gasto():
             gasto["nome"] = novo_nome
             gasto["valor"] = novo_valor
             gasto["data"] = nova_data
-            salvar_json(lista_gastos)
+            salvar_json(lista_transacoes)
 
             print("Gasto editado com sucesso!")
             return
@@ -80,7 +81,7 @@ def editar_gasto():
 
 
 def remover_gasto():
-    if not lista_gastos:
+    if not lista_transacoes:
         print("Nenhum gasto registrado.")
         return
 
@@ -91,10 +92,10 @@ def remover_gasto():
         except ValueError:
             print("Digite apenas números.")
 
-    for gasto in lista_gastos:
+    for gasto in lista_transacoes:
         if gasto["id"] == id_remover:
-            lista_gastos.remove(gasto)
-            salvar_json(lista_gastos)
+            lista_transacoes.remove(gasto)
+            salvar_json(lista_transacoes)
 
             print("Gasto removido com sucesso!")
             return
@@ -103,13 +104,13 @@ def remover_gasto():
 
 
 def total_gastos():
-    if not lista_gastos:
+    if not lista_transacoes:
         print("Nenhum gasto registrado.")
         return
 
     soma_gastos = 0
 
-    for gasto in lista_gastos:
+    for gasto in lista_transacoes:
         soma_gastos += gasto['valor']
 
     print(f"Total gasto: R$ {soma_gastos:.2f}")

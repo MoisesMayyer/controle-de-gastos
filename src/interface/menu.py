@@ -1,5 +1,5 @@
-from financeiro.gastos import (
-    adicionar_gasto,
+from financeiro.transacoes import (
+    adicionar_transacao,
     listar_gastos,
     editar_gasto,
     remover_gasto,
@@ -56,7 +56,7 @@ def iniciar():
             continue
 
         if opcao == 1:
-            adicionar_gasto()
+            adicionar_transacao()
 
         elif opcao == 2:
             listar_gastos()
