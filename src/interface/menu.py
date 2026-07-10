@@ -1,9 +1,9 @@
 from financeiro.transacoes import (
     adicionar_transacao,
-    listar_gastos,
-    editar_gasto,
-    remover_gasto,
-    total_gastos,
+    listar_transacoes,
+    remover_transacao,
+    editar_transacao,
+    total_despesas
 )
 
 
@@ -30,10 +30,10 @@ def sub_menu():
             continue
 
         if opcao_lista == 1:
-            remover_gasto()
+            remover_transacao()
 
         elif opcao_lista == 2:
-            editar_gasto()
+            editar_transacao()
 
         elif opcao_lista == 3:
             break
@@ -59,10 +59,10 @@ def iniciar():
             adicionar_transacao()
 
         elif opcao == 2:
-            listar_gastos()
+            listar_transacoes()
             sub_menu()
 
         elif opcao == 3:
-            total_gastos()
+            total_despesas()
         else:
             break

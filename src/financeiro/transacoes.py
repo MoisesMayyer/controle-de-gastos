@@ -2,12 +2,10 @@ from dados.dados import salvar_json, carregar_json
 from utils.utils import criar_id
 
 lista_transacoes = carregar_json()
-lista_transacoes = carregar_json()
 
-def adicionar_gasto():
-    descricao = input("Digite a descrição: ")
+
 def adicionar_transacao():
-    nome_gasto = input("Digite o nome do gasto: ")
+    descricao = input("Digite a descrição: ")
 
     while True:
         try:
@@ -29,7 +27,6 @@ def adicionar_transacao():
     data = input("Digite a data (dd/mm/aaaa): ")
 
     transacao_id = criar_id(lista_transacoes)
-    gasto_id = criar_id(lista_transacoes)
 
     transacao = {
         "id": transacao_id,
@@ -38,32 +35,22 @@ def adicionar_transacao():
         "tipo": tipo,
         "categoria": categoria,
         "data": data
-    transacoes = {
-        "id": gasto_id,
-        "nome": nome_gasto,
-        "valor": valor_gasto,
-        "data": data_gasto
     }
 
     lista_transacoes.append(transacao)
     salvar_json(lista_transacoes)
 
     print("Transação adicionada com sucesso!")
-    lista_transacoes.append(transacoes)
-    salvar_json(lista_transacoes)
-    print("Gasto adicionado com sucesso!")
 
 
-def listar_gastos():
+def listar_transacoes():
     if not lista_transacoes:
-    carregar_json()
-    if not lista_transacoes:
-        print("Nenhum gasto registrado.")
+        print("Nenhuma transação registrada.")
         return
 
     for transacao in lista_transacoes:
-    for gasto in lista_transacoes:
         print(
+            f"ID: {transacao['id']}\n"
             f"Descrição: {transacao['descricao']}\n"
             f"Valor: R$ {transacao['valor']:.2f}\n"
             f"Tipo: {transacao['tipo']}\n"
@@ -72,10 +59,9 @@ def listar_gastos():
         )
 
 
-def editar_gasto():
+def editar_transacao():
     if not lista_transacoes:
-    if not lista_transacoes:
-        print("Nenhum gasto registrado.")
+        print("Nenhuma transação registrada.")
         return
 
     while True:
@@ -83,38 +69,41 @@ def editar_gasto():
             id_editar = int(input("Digite o ID que deseja editar: "))
             break
         except ValueError:
-            print("digite um valor valido")
+            print("Digite um valor válido.")
 
-    for gasto in lista_transacoes:
-    for gasto in lista_transacoes:
-        if gasto["id"] == id_editar:
-            novo_nome = input("Digite o novo nome do gasto: ")
+    for transacao in lista_transacoes:
+        if transacao["id"] == id_editar:
+
+            transacao["descricao"] = input("Digite a nova descrição: ")
 
             while True:
                 try:
-                    novo_valor = float(input("Digite o novo valor do gasto: "))
+                    transacao["valor"] = float(input("Digite o novo valor: "))
                     break
                 except ValueError:
                     print("Valor inválido. Digite apenas números.")
 
-            nova_data = input("Digite a nova data do gasto (dd/mm/aaaa): ")
+            transacao["tipo"] = input(
+                "Digite o novo tipo (receita/despesa): "
+            ).lower()
 
-            gasto["nome"] = novo_nome
-            gasto["valor"] = novo_valor
-            gasto["data"] = nova_data
-            salvar_json(lista_transacoes)
+            transacao["categoria"] = input("Digite a nova categoria: ")
+
+            transacao["data"] = input(
+                "Digite a nova data (dd/mm/aaaa): "
+            )
+
             salvar_json(lista_transacoes)
 
-            print("Gasto editado com sucesso!")
+            print("Transação editada com sucesso!")
             return
 
-    print("Gasto não encontrado.")
+    print("Transação não encontrada.")
 
 
-def remover_gasto():
+def remover_transacao():
     if not lista_transacoes:
-    if not lista_transacoes:
-        print("Nenhum gasto registrado.")
+        print("Nenhuma transação registrada.")
         return
 
     while True:
@@ -124,30 +113,26 @@ def remover_gasto():
         except ValueError:
             print("Digite apenas números.")
 
-    for gasto in lista_transacoes:
-    for gasto in lista_transacoes:
-        if gasto["id"] == id_remover:
-            lista_transacoes.remove(gasto)
-            salvar_json(lista_transacoes)
-            lista_transacoes.remove(gasto)
+    for transacao in lista_transacoes:
+        if transacao["id"] == id_remover:
+            lista_transacoes.remove(transacao)
             salvar_json(lista_transacoes)
 
-            print("Gasto removido com sucesso!")
+            print("Transação removida com sucesso!")
             return
 
-    print("Gasto não encontrado.")
+    print("Transação não encontrada.")
 
 
-def total_gastos():
+def total_despesas():
     if not lista_transacoes:
-    if not lista_transacoes:
-        print("Nenhum gasto registrado.")
+        print("Nenhuma transação registrada.")
         return
 
-    soma_gastos = 0
+    total = 0
 
-    for gasto in lista_transacoes:
-    for gasto in lista_transacoes:
-        soma_gastos += gasto['valor']
+    for transacao in lista_transacoes:
+        if transacao["tipo"] == "despesa":
+            total += transacao["valor"]
 
-    print(f"Total gasto: R$ {soma_gastos:.2f}")
+    print(f"Total de despesas: R$ {total:.2f}")
