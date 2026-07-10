@@ -1,23 +1,26 @@
 from dados.dados import carregar_json
 
-lista_transacoes = carregar_json()
 
 def total_despesas():
+    transacoes = carregar_json()
+
     total = 0
 
-    for transacao in lista_transacoes:
-        if transacao["tipo"] == "despesa":
-            total += transacao["valor"]
+    for t in transacoes:
+        if t["tipo"] == "despesa":
+            total += t["valor"]
 
     return total
 
 
 def total_receitas():
+    transacoes = carregar_json()
+
     total = 0
 
-    for transacao in lista_transacoes:
-        if transacao["tipo"] == "receita":
-            total += transacao["valor"]
+    for t in transacoes:
+        if t["tipo"] == "receita":
+            total += t["valor"]
 
     return total
 
