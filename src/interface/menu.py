@@ -1,4 +1,4 @@
-from gastos import (
+from financeiro.gastos import (
     adicionar_gasto,
     listar_gastos,
     editar_gasto,

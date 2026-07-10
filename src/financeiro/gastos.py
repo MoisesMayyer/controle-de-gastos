@@ -1,5 +1,5 @@
-from dados import salvar_json, carregar_json
-from utils import criar_id
+from dados.dados import salvar_json, carregar_json
+from utils.utils import criar_id
 
 lista_gastos = carregar_json()
 
