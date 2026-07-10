@@ -1,6 +1,7 @@
+from dados import salvar_json, carregar_json
 from utils import criar_id
 
-lista_gastos = []
+lista_gastos = carregar_json()
 
 def adicionar_gasto():
     nome_gasto = input("Digite o nome do gasto: ")
@@ -24,6 +25,7 @@ def adicionar_gasto():
     }
 
     lista_gastos.append(gasto)
+    salvar_json(lista_gastos)
     print("Gasto adicionado com sucesso!")
 
 
@@ -69,6 +71,7 @@ def editar_gasto():
             gasto["nome"] = novo_nome
             gasto["valor"] = novo_valor
             gasto["data"] = nova_data
+            salvar_json(lista_gastos)
 
             print("Gasto editado com sucesso!")
             return
@@ -77,6 +80,10 @@ def editar_gasto():
 
 
 def remover_gasto():
+    if not lista_gastos:
+        print("Nenhum gasto registrado.")
+        return
+
     while True:
         try:
             id_remover = int(input("Digite o ID que deseja remover: "))
@@ -84,10 +91,11 @@ def remover_gasto():
         except ValueError:
             print("Digite apenas números.")
 
-
     for gasto in lista_gastos:
         if gasto["id"] == id_remover:
             lista_gastos.remove(gasto)
+            salvar_json(lista_gastos)
+
             print("Gasto removido com sucesso!")
             return
 
