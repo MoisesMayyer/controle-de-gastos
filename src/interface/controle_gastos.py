@@ -75,6 +75,7 @@ def montar_cards_resumo() -> Table:
 def montar_tabela_transacoes() -> Panel:
     tabela = Table(box=box.SIMPLE_HEAVY, expand=True, show_lines=False)
 
+    tabela.add_column("ID", justify="center")
     tabela.add_column("Data", style="dim", width=10)
     tabela.add_column("Descrição", style="white")
     tabela.add_column("Categoria", style="magenta")
@@ -87,7 +88,7 @@ def montar_tabela_transacoes() -> Panel:
         cor_valor = "green" if t["tipo"] == "receita" else "red"
         sinal = "+" if t["tipo"] == "receita" else "-"
 
-        tabela.add_row(
+        tabela.add_row(str(t["id"]),
             t["data"],
             t["descricao"],
             t["categoria"],
