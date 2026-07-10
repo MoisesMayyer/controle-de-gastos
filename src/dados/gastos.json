@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "descricao": "Supermercado",
+    "valor": 245.80,
+    "tipo": "despesa",
+    "categoria": "Alimentação",
+    "data": "10/07/2026"
+  },
+  {
+    "id": 2,
+    "descricao": "Salário",
+    "valor": 2500.00,
+    "tipo": "receita",
+    "categoria": "Renda",
+    "data": "05/07/2026"
+  }
+]
