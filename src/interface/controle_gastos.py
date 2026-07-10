@@ -162,7 +162,7 @@ def tela_transacoes():
     console.print()
     console.print(Panel(
         "[dim][1] Adicionar nova transação   [2] Editar   [3] Excluir   [4] Voltar [/dim]\n"
-        "[bold yellow]testando[/bold yellow]",
+        "[bold yellow]Gerencie suas transações[/bold yellow]",
         title="Ações", border_style="grey50", box=box.ROUNDED,
     ))
     submenu_transacoes()
