@@ -27,10 +27,22 @@ def saldo_atual():
 
 
 def obter_resumo():
+    transacoes = carregar_json()
+
+    receitas = 0
+    despesas = 0
+
+    for transacao in transacoes:
+        if transacao["tipo"] == "receita":
+            receitas += transacao["valor"]
+
+        elif transacao["tipo"] == "despesa":
+            despesas += transacao["valor"]
+
     return {
-        "saldo": saldo_atual(),
-        "receitas": total_receitas(),
-        "despesas": total_despesas(),
-        "meta_economia": 1500.00,
-        "economizado": 980.00,
+        "saldo": receitas - despesas,
+        "receitas": receitas,
+        "despesas": despesas,
+        "meta_economia": 1500,
+        "economizado": 980
     }
