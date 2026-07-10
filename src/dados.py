@@ -1,1 +1,6 @@
-# lugar onde ficará os dados em json antes da adição do banco de dados
+def carregar_json():
+    pass
+
+def salvar_json():
+    pass
+
