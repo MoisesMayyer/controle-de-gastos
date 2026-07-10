@@ -9,6 +9,7 @@ from rich import box
 from datetime import datetime
 from dados.dados import carregar_json
 from financeiro.calculos import obter_resumo
+from interface.menu_transacoes import submenu_transacoes
 
 console = Console()
 
@@ -160,11 +161,11 @@ def tela_transacoes():
     console.print(montar_tabela_transacoes())
     console.print()
     console.print(Panel(
-        "[dim]➕ Adicionar nova transação   ✏️ Editar   🗑️ Excluir[/dim]\n"
-        "[bold yellow](funcionalidade ainda não implementada - somente interface)[/bold yellow]",
+        "[dim][1] Adicionar nova transação   [2] Editar   [3] Excluir   [4] Voltar [/dim]\n"
+        "[bold yellow]testando[/bold yellow]",
         title="Ações", border_style="grey50", box=box.ROUNDED,
     ))
-
+    submenu_transacoes()
 
 def tela_categorias():
     console.print(montar_categorias())
