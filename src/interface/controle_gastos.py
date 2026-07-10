@@ -1,6 +1,4 @@
-
 from rich.console import Console
-from rich.layout import Layout
 from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
@@ -9,21 +7,10 @@ from rich.progress import Progress, BarColumn, TextColumn
 from rich.prompt import Prompt
 from rich import box
 from datetime import datetime
-import time
-from dados.dados import carregar_json,salvar_json
+from dados.dados import carregar_json
+from financeiro.calculos import obter_resumo
 
 console = Console()
-
-
-RESUMO = {
-    "saldo": 3250.75,
-    "receitas": 6800.00,
-    "despesas": 3549.25,
-    "meta_economia": 1500.00,
-    "economizado": 980.00,
-}
-
-
 
 CATEGORIAS = [
     {"nome": "Alimentação", "gasto": 980.00, "limite": 1200.00, "cor": "green"},
@@ -41,7 +28,6 @@ MENU_OPCOES = [
     ("5", "⚙️  Vazio"),
     ("0", "🚪 Sair"),
 ]
-
 
 def montar_cabecalho() -> Panel:
     titulo = Text("💰  CONTROLE DE GASTOS", style="bold white on dark_green", justify="center")
@@ -67,16 +53,18 @@ def montar_cards_resumo() -> Table:
     tabela.add_column(ratio=1)
     tabela.add_column(ratio=1)
 
+    resumo = obter_resumo()
+
     card_saldo = Panel(
-        Align.center(Text(f"R$ {RESUMO['saldo']:.2f}", style="bold green")),
+        Align.center(Text(f"R$ {resumo['saldo']:.2f}", style="bold green")),
         title="💼 Saldo Atual", border_style="green", box=box.ROUNDED,
     )
     card_receitas = Panel(
-        Align.center(Text(f"R$ {RESUMO['receitas']:.2f}", style="bold cyan")),
+        Align.center(Text(f"R$ {resumo['receitas']:.2f}", style="bold cyan")),
         title="⬆️  Receitas", border_style="cyan", box=box.ROUNDED,
     )
     card_despesas = Panel(
-        Align.center(Text(f"R$ {RESUMO['despesas']:.2f}", style="bold red")),
+        Align.center(Text(f"R$ {resumo['despesas']:.2f}", style="bold red")),
         title="⬇️  Despesas", border_style="red", box=box.ROUNDED,
     )
     tabela.add_row(card_saldo, card_receitas, card_despesas)
@@ -127,14 +115,27 @@ def montar_categorias() -> Panel:
 
 
 def montar_meta() -> Panel:
-    pct = RESUMO["economizado"] / RESUMO["meta_economia"] * 100
+    resumo = obter_resumo()
+
+    pct = resumo["economizado"] / resumo["meta_economia"] * 100
+
     barra = Progress(
         TextColumn("Meta de Economia"),
         BarColumn(bar_width=40, complete_style="bright_green"),
         TextColumn(f"{pct:.0f}%"),
     )
-    barra.add_task("", total=RESUMO["meta_economia"], completed = RESUMO["economizado"])
-    return Panel(barra, border_style="bright_green", box=box.ROUNDED)
+
+    barra.add_task(
+        "",
+        total=resumo["meta_economia"],
+        completed=resumo["economizado"]
+    )
+
+    return Panel(
+        barra,
+        border_style="bright_green",
+        box=box.ROUNDED
+    )
 
 
 def montar_rodape(mensagem: str = "") -> Panel:
@@ -143,9 +144,9 @@ def montar_rodape(mensagem: str = "") -> Panel:
     return Panel(texto, box=box.MINIMAL, style="on grey15")
 
 
-# ------------------------------------------------------------------
+
 # TELAS
-# ------------------------------------------------------------------
+
 
 def tela_dashboard():
     console.print(montar_cards_resumo())

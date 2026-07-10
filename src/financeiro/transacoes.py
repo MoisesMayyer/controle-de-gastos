@@ -1,5 +1,6 @@
 from dados.dados import salvar_json, carregar_json
 from utils.utils import criar_id
+from financeiro.calculos import total_receitas
 
 lista_transacoes = carregar_json()
 
@@ -136,3 +137,4 @@ def total_despesas():
             total += transacao["valor"]
 
     print(f"Total de despesas: R$ {total:.2f}")
+    print(f"Total de receita: R$ {total_receitas()}")
