@@ -7,20 +7,34 @@ from dados.dados import carregar_json, CAMINHO_CATEGORIAS
 
 console = Console()
 
-categorias = carregar_json(CAMINHO_CATEGORIAS)
+
 
 def montar_categorias() -> Panel:
+
+    categorias = carregar_json(CAMINHO_CATEGORIAS)
+
     progress = Progress(
+        TextColumn("[bold]ID: {task.fields[id]}"),
         TextColumn("[bold]{task.fields[nome]:<14}"),
         BarColumn(bar_width=30),
         TextColumn("R$ {task.fields[gasto]:.2f} / R$ {task.fields[limite]:.2f}"),
         expand=True,
     )
+
     if categorias:
         for c in categorias:
-            progress.add_task("", total=c["limite"], completed=c["gasto"],
-                               nome=c["nome"], gasto=c["gasto"], limite=c["limite"])
+            progress.add_task(
+                "",
+                total=c["limite"],
+                completed=c["gasto"],
+                id=c["categoria_id"],
+                nome=c["nome"],
+                gasto=c["gasto"],
+                limite=c["limite"]
+            )
+
         return Panel(progress, title="🗂️  Gastos por Categoria", border_style="yellow", box=box.ROUNDED)
+
     else:
         return Panel(
             "Nenhuma categoria cadastrada.",

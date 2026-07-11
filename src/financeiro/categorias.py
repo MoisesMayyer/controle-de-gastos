@@ -1,4 +1,6 @@
 from dados.dados import carregar_json, salvar_json, CAMINHO_CATEGORIAS
+#from financeiro.calculos import gasto_categoria
+from utils.utils import criar_id_categoria
 
 categorias_lista = carregar_json(CAMINHO_CATEGORIAS)
 
@@ -13,10 +15,12 @@ def nova_categoria():
         except ValueError:
             print("Valor inválido. Digite apenas números.")
 
+    ida = criar_id_categoria(categorias_lista)
+
     categoria_nova = {
-        "categoria_id": "categoria_id",
+        "categoria_id": ida,
         "nome": nome_categoria,
-        "gasto": "gasto_categoria",
+        "gasto": 300,
         "limite": limite_categoria
     }
 
