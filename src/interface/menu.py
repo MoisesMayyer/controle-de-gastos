@@ -11,7 +11,7 @@ from interface.componentes import (
 
 from interface.dashboard import tela_dashboard
 from interface.menu_transacoes import tela_transacoes
-from interface.categorias import tela_categorias
+from interface.menu_categorias import tela_categorias
 
 
 console = Console()

@@ -27,13 +27,3 @@ def montar_categorias() -> Panel:
             border_style="yellow",
             box=box.ROUNDED,
         )
-
-
-def tela_categorias():
-    console.print(montar_categorias())
-    console.print()
-    console.print(Panel(
-        "[dim]➕ Nova categoria   ✏️ Editar limite[/dim]\n"
-        "[bold yellow](funcionalidade ainda não implementada - somente interface)[/bold yellow]",
-        title="Ações", border_style="grey50", box=box.ROUNDED,
-    ))
