@@ -11,23 +11,23 @@ Criar uma aplicação que permita ao usuário registrar e acompanhar suas despes
 ✅ Adicionar novos gastos  
 ✅ Listar gastos cadastrados  
 ✅ Tratamento de erros de entrada de dados  
-⬜ Mostrar total acumulado  
-⬜ Editar gastos existentes  
-⬜ Remover gastos  
-⬜ Salvar dados para uso futuro com banco de dados ou arquivo
+✅ Mostrar total acumulado  
+✅ Editar gastos existentes  
+✅ Remover gastos  
+✅ Salvar dados para uso futuro com banco de dados ou arquivo
 
 ## Como executar
 
 No terminal, execute:
 
 ```bash
-python main.py
+python __main__.py
 ```
 
  ```bash
 ControleDeGastos/
 │
-├── main.py          # Ponto de entrada do programa
+├── __main__.py          # Ponto de entrada do programa
 ├── src/             # Funções principais do sistema
 └── dados/           # Armazenamento de dados
 ```
