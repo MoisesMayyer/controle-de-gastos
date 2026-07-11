@@ -20,7 +20,6 @@ def nova_categoria():
     categoria_nova = {
         "id": id_categoria,
         "nome": nome_categoria,
-        "gasto": 300,
         "limite": limite_categoria
     }
 
@@ -28,6 +27,7 @@ def nova_categoria():
     salvar_json(CAMINHO_CATEGORIAS, categorias_lista)
 
     print("categoria adicionada com sucesso!")
+
 
 
 def editar_limite():
@@ -38,4 +38,23 @@ def remover_categoria():
     pass
 
 
+def listar_categorias():
+    if categorias_lista:
+        for categorias in categorias_lista:
+            print(f"{categorias['id']} - {categorias['nome']}")
+    else:
+        print("Voce deve criar uma categoria!")
+        nova_categoria()
 
+    while True:
+        id_categoria = int(input("Selecione o id da categoria: "))
+
+        existe = any(
+            categoria["id"] == id_categoria
+            for categoria in categorias_lista
+        )
+
+        if not existe:
+            print("Crie ou escolha uma categoria existente")
+        else:
+            return id_categoria

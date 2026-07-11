@@ -1,4 +1,5 @@
-from dados.dados import salvar_json, carregar_json, CAMINHO_TRANSACOES
+from dados.dados import salvar_json, carregar_json, CAMINHO_TRANSACOES, CAMINHO_CATEGORIAS
+from financeiro.categorias import listar_categorias
 from utils.utils import criar_id
 from financeiro.calculos import total_receitas
 
@@ -6,6 +7,8 @@ lista_transacoes = carregar_json(CAMINHO_TRANSACOES)
 
 
 def adicionar_transacao():
+    categoria = listar_categorias()
+
     descricao = input("Digite a descrição: ")
 
     while True:
@@ -23,8 +26,6 @@ def adicionar_transacao():
 
         print("Tipo inválido. Digite receita ou despesa.")
 
-    categoria = input("Digite a categoria: ")
-
     data = input("Digite a data (dd/mm/aaaa): ")
 
     transacao_id = criar_id(lista_transacoes)
@@ -34,7 +35,7 @@ def adicionar_transacao():
         "descricao": descricao,
         "valor": valor,
         "tipo": tipo,
-        "categoria": categoria,
+        "categoria_id": categoria,
         "data": data
     }
 
@@ -55,7 +56,7 @@ def listar_transacoes():
             f"Descrição: {transacao['descricao']}\n"
             f"Valor: R$ {transacao['valor']:.2f}\n"
             f"Tipo: {transacao['tipo']}\n"
-            f"Categoria: {transacao['categoria']}\n"
+            f"Categoria_id: {transacao['categoria_id']}\n"
             f"Data: {transacao['data']}\n"
         )
 
@@ -88,7 +89,7 @@ def editar_transacao():
                 "Digite o novo tipo (receita/despesa): "
             ).lower()
 
-            transacao["categoria"] = input("Digite a nova categoria: ")
+            transacao["categoria_id"] = input("Digite a nova categoria: ")
 
             transacao["data"] = input(
                 "Digite a nova data (dd/mm/aaaa): "
@@ -138,3 +139,14 @@ def total_despesas():
 
     print(f"Total de despesas: R$ {total:.2f}")
     print(f"Total de receita: R$ {total_receitas()}")
+
+
+def buscar_nome_categoria(categoria_id):
+    lista_categorias = carregar_json(CAMINHO_CATEGORIAS)
+
+    for categoria in lista_categorias:
+        if categoria["id"] == categoria_id:
+            return categoria["nome"]
+
+    return "Sem categoria"
+

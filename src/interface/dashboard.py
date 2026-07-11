@@ -8,6 +8,8 @@ from dados.dados import carregar_json, CAMINHO_TRANSACOES
 from financeiro.calculos import obter_resumo
 from rich.console import Console
 
+from financeiro.transacoes import buscar_nome_categoria
+
 console = Console()
 
 
@@ -54,7 +56,7 @@ def montar_tabela_transacoes() -> Panel:
         tabela.add_row(str(t["id"]),
             t["data"],
             t["descricao"],
-            t["categoria"],
+            buscar_nome_categoria(t["categoria_id"]),
             f"[{cor_valor}]{t['tipo']}[/]",
             f"[{cor_valor}]{sinal} R$ {t['valor']:.2f}[/]",
         )
