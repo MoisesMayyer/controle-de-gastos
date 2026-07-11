@@ -1,8 +1,8 @@
-from dados.dados import carregar_json
+from dados.dados import carregar_json, CAMINHO_TRANSACOES
 
 
 def total_despesas():
-    transacoes = carregar_json()
+    transacoes = carregar_json(CAMINHO_TRANSACOES)
 
     total = 0
 
@@ -14,7 +14,7 @@ def total_despesas():
 
 
 def total_receitas():
-    transacoes = carregar_json()
+    transacoes = carregar_json(CAMINHO_TRANSACOES)
 
     total = 0
 
@@ -30,7 +30,7 @@ def saldo_atual():
 
 
 def obter_resumo():
-    transacoes = carregar_json()
+    transacoes = carregar_json(CAMINHO_TRANSACOES)
 
     receitas = 0
     despesas = 0

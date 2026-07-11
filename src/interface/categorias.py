@@ -3,10 +3,11 @@ from rich.progress import Progress, BarColumn, TextColumn
 from rich import box
 from rich.console import Console
 
+from dados.dados import carregar_json, CAMINHO_CATEGORIAS
 
 console = Console()
 
-categorias = []
+categorias = carregar_json(CAMINHO_CATEGORIAS)
 
 def montar_categorias() -> Panel:
     progress = Progress(

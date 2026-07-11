@@ -1,26 +1,29 @@
 import json
 from pathlib import Path
 
+PASTA_DADOS = Path(__file__).parent
 
-CAMINHO_ARQUIVO = Path(__file__).parent / "gastos.json"
+CAMINHO_TRANSACOES  = PASTA_DADOS / "gastos.json"
+
+CAMINHO_CATEGORIAS = PASTA_DADOS / "categorias.json"
 
 
-def carregar_json():
+def carregar_json(caminho: Path):
 
-    if not CAMINHO_ARQUIVO.exists():
+    if not caminho.exists():
         return []
 
     try:
-        with open(CAMINHO_ARQUIVO, "r", encoding="utf-8") as file:
+        with open(caminho, "r", encoding="utf-8") as file:
             return json.load(file)
 
     except json.JSONDecodeError:
         return []
 
 
-def salvar_json(dados):
+def salvar_json(caminho: Path, dados):
 
-    with open(CAMINHO_ARQUIVO, "w", encoding="utf-8") as file:
+    with open(caminho, "w", encoding="utf-8") as file:
         json.dump(
             dados,
             file,

@@ -4,7 +4,7 @@ from rich.text import Text
 from rich.align import Align
 from rich.progress import Progress, BarColumn, TextColumn
 from rich import box
-from dados.dados import carregar_json
+from dados.dados import carregar_json, CAMINHO_TRANSACOES
 from financeiro.calculos import obter_resumo
 from rich.console import Console
 
@@ -45,7 +45,7 @@ def montar_tabela_transacoes() -> Panel:
     tabela.add_column("Tipo", justify="center")
     tabela.add_column("Valor", justify="right")
 
-    transacoes = carregar_json()
+    transacoes = carregar_json(CAMINHO_TRANSACOES)
 
     for t in transacoes:
         cor_valor = "green" if t["tipo"] == "receita" else "red"
