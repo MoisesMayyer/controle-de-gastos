@@ -27,7 +27,7 @@ def montar_categorias() -> Panel:
                 "",
                 total=c["limite"],
                 completed=c["gasto"],
-                id=c["categoria_id"],
+                id=c["id"],
                 nome=c["nome"],
                 gasto=c["gasto"],
                 limite=c["limite"]

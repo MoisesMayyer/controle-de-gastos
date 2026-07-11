@@ -39,7 +39,7 @@ def adicionar_transacao():
     }
 
     lista_transacoes.append(transacao)
-    salvar_json(lista_transacoes, CAMINHO_TRANSACOES)
+    salvar_json(CAMINHO_TRANSACOES,lista_transacoes)
 
     print("Transação adicionada com sucesso!")
 
@@ -94,7 +94,7 @@ def editar_transacao():
                 "Digite a nova data (dd/mm/aaaa): "
             )
 
-            salvar_json(lista_transacoes, CAMINHO_TRANSACOES)
+            salvar_json(CAMINHO_TRANSACOES, lista_transacoes)
 
             print("Transação editada com sucesso!")
             return
@@ -117,7 +117,7 @@ def remover_transacao():
     for transacao in lista_transacoes:
         if transacao["id"] == id_remover:
             lista_transacoes.remove(transacao)
-            salvar_json(lista_transacoes, CAMINHO_TRANSACOES)
+            salvar_json(CAMINHO_TRANSACOES,lista_transacoes)
 
             print("Transação removida com sucesso!")
             return
