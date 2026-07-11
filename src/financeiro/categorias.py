@@ -39,12 +39,17 @@ def remover_categoria():
 
 
 def listar_categorias():
-    if categorias_lista:
-        for categorias in categorias_lista:
-            print(f"{categorias['id']} - {categorias['nome']}")
-    else:
-        print("Voce deve criar uma categoria!")
+    categoria_lista = carregar_json(CAMINHO_CATEGORIAS)
+
+    if not categoria_lista:
+        print("Você deve criar uma categoria!")
         nova_categoria()
+
+
+        categoria_lista = carregar_json(CAMINHO_CATEGORIAS)
+
+    for categoria in categoria_lista:
+        print(f"{categoria['id']} - {categoria['nome']}")
 
     while True:
         id_categoria = int(input("Selecione o id da categoria: "))
