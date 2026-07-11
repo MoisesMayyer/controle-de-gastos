@@ -46,6 +46,18 @@ def obter_resumo():
         "saldo": receitas - despesas,
         "receitas": receitas,
         "despesas": despesas,
-        "meta_economia": 1500,
-        "economizado": 980
+        "meta_economia": 100,
+        "economizado": 0
     }
+
+def calcular_gasto_categoria(id_categoria):
+    total = 0
+
+    lista_transacoes = carregar_json(CAMINHO_TRANSACOES)
+
+    for transacao in lista_transacoes:
+
+        if transacao['categoria_id'] == id_categoria:
+            total += transacao["valor"]
+
+    return total

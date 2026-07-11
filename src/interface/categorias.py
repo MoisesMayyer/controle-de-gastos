@@ -4,6 +4,7 @@ from rich import box
 from rich.console import Console
 
 from dados.dados import carregar_json, CAMINHO_CATEGORIAS
+from financeiro.calculos import calcular_gasto_categoria
 
 console = Console()
 
@@ -23,13 +24,14 @@ def montar_categorias() -> Panel:
 
     if categorias:
         for c in categorias:
+            gasto = calcular_gasto_categoria(c["id"])
             progress.add_task(
                 "",
                 total=c["limite"],
-                completed=c["gasto"],
+                completed=gasto,
                 id=c["id"],
                 nome=c["nome"],
-                gasto=c["gasto"],
+                gasto=gasto,
                 limite=c["limite"]
             )
 

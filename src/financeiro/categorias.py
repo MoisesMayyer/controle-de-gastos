@@ -6,7 +6,7 @@ categorias_lista = carregar_json(CAMINHO_CATEGORIAS)
 
 
 def nova_categoria():
-    nome_categoria = input("Digite o nome do categoria: ")
+    nome_categoria = input("Digite o nome da nova categoria: ")
 
     while True:
         try:
