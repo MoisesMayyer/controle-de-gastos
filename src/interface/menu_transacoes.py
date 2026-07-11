@@ -16,15 +16,12 @@ def tela_transacoes():
 
     console.print(
         Panel(
-            "[1] Adicionar\n"
-            "[2] Editar\n"
-            "[3] Excluir\n"
-            "[4] Voltar",
-            title="Transações",
-            border_style="blue",
-            box=box.ROUNDED
+            "[dim][1] Adicionar nova transação   [2] Editar   [3] Excluir   [4] Sair[/dim]\n"
+        "[bold yellow]Gerencie seus gastos [/bold yellow]",
+        title="Ações", border_style="grey50", box=box.ROUNDED,
         )
     )
+
 
     submenu_transacoes()
 
@@ -44,12 +41,15 @@ def submenu_transacoes():
 
         if opcao == 1:
             adicionar_transacao()
+            break
 
         elif opcao == 2:
             editar_transacao()
+            break
 
         elif opcao == 3:
             remover_transacao()
+            break
 
         elif opcao == 4:
             break

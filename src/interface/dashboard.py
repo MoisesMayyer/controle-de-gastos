@@ -10,14 +10,6 @@ from rich.console import Console
 
 console = Console()
 
-CATEGORIAS = [
-    {"nome": "Alimentação", "gasto": 980.00, "limite": 1200.00},
-    {"nome": "Transporte", "gasto": 540.00, "limite": 600.00},
-    {"nome": "Moradia", "gasto": 1500.00, "limite": 1500.00},
-    {"nome": "Lazer", "gasto": 310.25, "limite": 500.00},
-    {"nome": "Saúde", "gasto": 219.00, "limite": 400.00},
-]
-
 
 def montar_cards_resumo() -> Table:
     tabela = Table.grid(expand=True)
@@ -74,17 +66,6 @@ def montar_tabela_transacoes() -> Panel:
         box=box.ROUNDED
     )
 
-def montar_categorias() -> Panel:
-    progress = Progress(
-        TextColumn("[bold]{task.fields[nome]:<14}"),
-        BarColumn(bar_width=30),
-        TextColumn("R$ {task.fields[gasto]:.2f} / R$ {task.fields[limite]:.2f}"),
-        expand=True,
-    )
-    for c in CATEGORIAS:
-        progress.add_task("", total=c["limite"], completed=c["gasto"],
-                           nome=c["nome"], gasto=c["gasto"], limite=c["limite"])
-    return Panel(progress, title="🗂️  Gastos por Categoria", border_style="yellow", box=box.ROUNDED)
 
 
 def montar_meta() -> Panel:
