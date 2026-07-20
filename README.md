@@ -1,19 +1,20 @@
-# Controle de Gastos
+# Sistema de Controle Financeiro
 
-Este projeto é um sistema simples de controle de gastos desenvolvido em Python para execução no terminal. O objetivo é praticar conceitos de programação, organização de código e persistência de dados.
+Este projeto é um sistema de controle financeiro desenvolvido em Python para execução no terminal. O objetivo é gerenciar receitas e despesas de forma organizada, demonstrando lógica de programação, organização de código e atenção aos detalhes.
 
 ## Objetivo
 
-Criar uma aplicação que permita ao usuário registrar e acompanhar suas despesas de forma simples e organizada.
+Criar uma aplicação que permita ao usuário registrar, organizar e acompanhar suas receitas e despesas, gerando relatórios e armazenando as informações para consultas futuras.
 
 ## Funcionalidades
 
-✅ Adicionar novos gastos  
-✅ Listar gastos cadastrados  
+✅ Adicionar novas receitas e despesas  
+✅ Listar receitas e despesas cadastradas  
 ✅ Tratamento de erros de entrada de dados  
-✅ Mostrar total acumulado  
-✅ Editar gastos existentes  
-✅ Remover gastos  
+✅ Mostrar saldo e totais acumulados (receitas x despesas)  
+✅ Editar receitas e despesas existentes  
+✅ Remover receitas e despesas  
+✅ Gerar relatórios financeiros  
 ✅ Salvar dados para uso futuro com banco de dados ou arquivo
 
 ## Como executar
@@ -24,10 +25,10 @@ No terminal, execute:
 python __main__.py
 ```
 
- ```bash
-ControleDeGastos/
+```bash
+SistemaDeControleFinanceiro/
 │
-├── __main__.py          # Ponto de entrada do programa
-├── src/             # Funções principais do sistema
+├── __main__.py      # Ponto de entrada do programa
+├── src/             # Funções principais do sistema (receitas, despesas, relatórios)
 └── dados/           # Armazenamento de dados
 ```
