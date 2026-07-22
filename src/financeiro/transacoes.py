@@ -1,5 +1,5 @@
 from dados.dados import salvar_json, carregar_json, CAMINHO_TRANSACOES, CAMINHO_CATEGORIAS
-from financeiro.categorias import listar_categorias
+from financeiro.categorias import obter_todas_categorias
 from utils.utils import criar_id
 from financeiro.calculos import total_receitas
 
@@ -7,7 +7,7 @@ lista_transacoes = carregar_json(CAMINHO_TRANSACOES)
 
 
 def adicionar_transacao():
-    categoria = listar_categorias()
+    categoria = obter_todas_categorias()
 
     descricao = input("Digite a descrição: ")
 
