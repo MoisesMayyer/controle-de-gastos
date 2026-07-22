@@ -44,3 +44,5 @@ def montar_categorias() -> Panel:
             border_style="yellow",
             box=box.ROUNDED,
         )
+
+

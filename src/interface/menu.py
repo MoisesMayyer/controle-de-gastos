@@ -4,14 +4,14 @@ from rich.text import Text
 from rich.panel import Panel
 from rich.align import Align
 from rich import box
-from interface.componentes import (
+from interface.componentes_menu import (
     montar_cabecalho,
     montar_menu_lateral,
 )
 
-from interface.dashboard import tela_dashboard
-from interface.menu_transacoes import tela_transacoes
-from interface.menu_categorias import tela_categorias
+from interface.dashboard_menu import tela_dashboard
+from interface.interface_transacoes import tela_transacoes
+from interface.interface_categorias import tela_categorias
 
 
 console = Console()

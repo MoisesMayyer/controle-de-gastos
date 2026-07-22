@@ -1,8 +1,9 @@
 from rich.panel import Panel
 from rich.console import Console
 from rich import box
-from interface.categorias import montar_categorias
-from financeiro.categorias import nova_categoria
+from interface.categorias_menu import montar_categorias
+from financeiro.categorias import nova_categoria, remover_categoria, editar_limite
+
 
 console = Console()
 
@@ -31,11 +32,9 @@ def submenu_categorias():
             nova_categoria()
             break
         elif opcao == 2:
-            #editar_limite()
-            pass
+            editar_limite()
         elif opcao == 3:
-            #remover_categoria()
-            pass
+            remover_categoria()
         elif opcao == 4:
             break
         else:

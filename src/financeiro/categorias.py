@@ -35,7 +35,23 @@ def editar_limite():
 
 
 def remover_categoria():
-    pass
+    categorias_lista = carregar_json(CAMINHO_CATEGORIAS)
+
+    id_remover = int(input("Qual você deseja remover: "))
+
+    encontrada = False
+
+    for categoria in categorias_lista:
+        if categoria["id"] == id_remover:
+            categorias_lista.remove(categoria)
+            encontrada = True
+            break
+
+    if encontrada:
+        salvar_json(CAMINHO_CATEGORIAS, categorias_lista)
+        print("Categoria removida com sucesso!")
+    else:
+        print("Categoria não encontrada!")
 
 
 def listar_categorias():
